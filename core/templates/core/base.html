@@ -32,17 +32,24 @@
   </nav>
 
   {% if messages %}
-    <div class="mt-6 mx-auto max-w-lg">
-      {% for message in messages %}
-        <div class="bg-yellow-200 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4">
-          <div class="flex items-center">
-            <div class="text-lg font-bold mr-3">Holy guacamole!</div>
-            <div class="text-sm">{{ message }}</div>
-          </div>
+  <div class="mt-6 mx-auto max-w-lg">
+    {% for message in messages %}
+      <div class="bg-yellow-200 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4 relative rounded-lg">
+        <div class="flex items-center">
+          <div class="text-lg font-bold mr-3">{{ message }}</div>
         </div>
-      {% endfor %}
-    </div>
-  {% endif %}
+        <button type="button" class="absolute top-0 right-0 p-1 hover:text-gray-900 transition duration-300" aria-label="Close" onclick="this.parentNode.style.display = 'none';">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+
 
   {% block content %}
 
