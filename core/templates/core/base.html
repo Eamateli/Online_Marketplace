@@ -6,8 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
   <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
@@ -15,7 +13,7 @@
   
 </head>
 
-<body>
+<body class="font-sans antialiased">
   <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200">
     <a href="/" class="text-xl font-semibold">Bazaar</a>
     <div class="space-x-6">
@@ -31,44 +29,39 @@
             <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log In</a>
         {% endif %}
     </div>
-</nav>
+  </nav>
 
-{% if messages %}
+  {% if messages %}
     <div class="mt-6 mx-auto max-w-lg">
-        {% for message in messages %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>{{ message.tags }}</strong> {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
+      {% for message in messages %}
+        <div class="bg-yellow-200 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4">
+          <div class="flex items-center">
+            <div class="text-lg font-bold mr-3">Holy guacamole!</div>
+            <div class="text-sm">{{ message }}</div>
+          </div>
+        </div>
+      {% endfor %}
     </div>
-{% endif %}
+  {% endif %}
 
-    {% block content %}
+  {% block content %}
 
-    {% endblock %}
-  </div>
+  {% endblock %}
 
   <footer class="py-6 px-6 flex justify-between bg-gray-800">
     <div class="w-2/3 pr-10">
         <h3 class="mb-5 font-semibold text-gray-400">About</h3>
-
         <p class="text-lg text-gray-500">Lorem ipsum bla bla bla. Lorem ipsum bla bla bla </p>
-
-    </div class="w-1-3">
+    </div>
+    <div class="w-1/3">
         <h3 class="mb-5 font-semibold text-gray-400">Menu</h3>
-
         <ul class="space-y-2">
             <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">About</a></li>
             <li><a href="{% url 'core:contact' %}" class="text-lg text-teal-500 hover:text-teal-700">Contact</a></li>
             <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Privacy Policy</a></li>
             <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">Terms of use</a></li>
         </ul>
-
-    <div>
-
     </div>
-
   </footer>
 
 </body>
