@@ -25,13 +25,23 @@ def signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'You have successfully signed up!')
-            return redirect('core:login')
-        else:
-            for error in form.errors.values():
-                messages.error(request, error.as_text())
+            
+            # Automatically log in the user after successful registration
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            if user is not None:
+                login(request, user)
+                
+                # Add a success message
+                messages.success(request, 'Welcome! You have successfully signed up!')
+                
+                # Redirect the user to the home page or any other desired page
+                return redirect('/')
+                
     else:
         form = SignupForm()
+    
     return render(request, 'core/signup.html', {'form': form})
 
 def login_user(request):
