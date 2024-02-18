@@ -16,18 +16,21 @@ def index(request):
 def contact(request):
     return render(request, 'core/contact.html')
 
-def signup(request):
-    if request.method == 'POST':
-        form  = SignupForm(request.POST)
+# def signup(request):
+#     if request.method == 'POST':
+#         form  = SignupForm(request.POST)
         
-        if form.is_valid():
-            form.save()
+#         if form.is_valid():
+#             form.save()
             
-            return redirect('/login')
+#             return redirect('/login')
         
-    else:
-        form = SignupForm()
+#     else:
+#         form = SignupForm()
     
-    return render(request, 'core/signup.html', {
-        'form':form 
-    })
+#     return render(request, 'core/signup.html', {
+#         'form':form 
+#     })
+
+def logout_user(request):
+    pass
