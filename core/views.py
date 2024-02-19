@@ -44,9 +44,6 @@ def signup(request):
     
     return render(request, 'core/signup.html', {'form': form})
 
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-
 def login_user(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
@@ -65,7 +62,6 @@ def login_user(request):
     else:
         form = AuthenticationForm()
     return render(request, 'core/login.html', {'form': form})
-
 
 def logout_user(request):
     logout(request)
