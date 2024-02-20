@@ -29,7 +29,7 @@
         {% for item in related_items %}
 
         <div>
-            <a href="{% url 'item:detail' item.id %}">
+            <a href="{% url 'item:details' item.id %}">
                 {% if item.image %}
                 <img src="{{ item.image.url }}" class="rounded-t-xl">
                 {% endif %}
