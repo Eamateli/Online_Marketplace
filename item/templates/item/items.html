@@ -1,0 +1,28 @@
+{% extends 'core/base.html'  %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<div class="pb-6 grid grid-cols-4 bg-gray-100 m-3 rounded-xl">
+    <div class="col-span-1">
+        side bar
+    </div>
+    <div class="col-span-3">
+        <div class="grid grid-cols-3 gap-3">
+            {% for item in items %}
+            <div class="m-5"> 
+                <a href="{% url 'item:details' item.id %}">
+                    {% if item.image %}
+                    <img src="{{ item.image.url }}" class="rounded-t-xl">
+                    {% endif %}
+                    <div class="p-4 bg-white rounded-xl"> 
+                        <h2 class="text-lg"> {{ item.name }} </h2> 
+                        <p class="text-sm text-gray-500">Price: {{ item.price }} </p> 
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
