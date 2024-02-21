@@ -20,7 +20,7 @@ def new(request):
             item = form.save(commit=False)
             item.created_by = request.user
             item.save()   
-            return redirect('item:details', pk=item.id)
+            return redirect('item:detail', pk=item.id)
     else:
         form = NewItemForm()
     
@@ -48,7 +48,7 @@ def edit(request,pk):
             form.save()
             
   
-            return redirect('item:detail', pk=item.id)
+            return redirect('item:details', pk=item.id)
     else:
         form = EditItemForm(instance=item)
     
